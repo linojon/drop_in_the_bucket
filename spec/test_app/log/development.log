@@ -1,0 +1,643 @@
+  [1m[36m (1.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (15.0ms)[0m  select sqlite_version(*)
+  [1m[36m (3.3ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateNotes (20140721040457)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "notes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140721040457"]]
+  [1m[35m (3.2ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateDropinFiles (20140721042159)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "dropin_files" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "dropinable_id" integer, "dropinable_type" varchar(255), "scope" varchar(255), "item" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140721042159"]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-21 00:36:03 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by NotesController#index as HTML
+  [1m[35mNote Load (0.2ms)[0m  SELECT "notes".* FROM "notes"
+  Rendered collection (0.0ms)
+  Rendered notes/index.html.erb within layouts/application (17.6ms)
+Completed 200 OK in 68ms (Views: 58.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-21 00:36:03 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-21 00:36:03 -0400
+
+
+Started GET "/notes/new?kind=builder" for 127.0.0.1 at 2014-07-21 00:36:07 -0400
+Processing by NotesController#new as HTML
+  Parameters: {"kind"=>"builder"}
+  Rendered notes/new.html.erb within layouts/application (4.0ms)
+Completed 500 Internal Server Error in 7ms
+
+ActionView::Template::Error (Missing partial notes/_form_builder, application/_form_builder with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee]}. Searched in:
+  * "/Users/jlinowes/Projects/drop_in_the_bucket/spec/test_app/app/views"
+  * "/Users/jlinowes/Projects/drop_in_the_bucket/app/views"
+):
+    1: <%= render "form_#{params[:kind]}", note: @note %>
+  app/views/notes/new.html.erb:1:in `_app_views_notes_new_html_erb__1214994245271725041_2164169720'
+
+
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (16.1ms)
+
+
+Started GET "/notes/new?kind=builder" for 127.0.0.1 at 2014-07-21 00:36:31 -0400
+Processing by NotesController#new as HTML
+  Parameters: {"kind"=>"builder"}
+  Rendered notes/_form_builder.html.erb (67.4ms)
+  Rendered notes/new.html.erb within layouts/application (68.1ms)
+Completed 200 OK in 71ms (Views: 70.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-21 00:36:31 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-21 00:36:31 -0400
+
+
+Started GET "/notes/new?kind=builder" for 127.0.0.1 at 2014-07-21 00:37:39 -0400
+Processing by NotesController#new as HTML
+  Parameters: {"kind"=>"builder"}
+  Rendered notes/_form_builder.html.erb (41.9ms)
+  Rendered notes/new.html.erb within layouts/application (42.7ms)
+Completed 200 OK in 46ms (Views: 46.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-21 00:37:39 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-21 00:37:39 -0400
+
+
+Started GET "/notes/new?kind=builder" for 127.0.0.1 at 2014-07-21 00:42:38 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by NotesController#new as HTML
+  Parameters: {"kind"=>"builder"}
+  Rendered notes/_form_builder.html.erb (29.0ms)
+  Rendered notes/new.html.erb within layouts/application (33.1ms)
+Completed 200 OK in 52ms (Views: 47.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-21 00:42:38 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-21 00:42:38 -0400
+
+
+Started POST "/notes" for 127.0.0.1 at 2014-07-21 00:42:48 -0400
+Processing by NotesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WavEEL28SGf4t6EPB57I2VVZ1ssVhyOInD6zNvjm3gc=", "note"=>{"body"=>"", "photo"=>#<ActionDispatch::Http::UploadedFile:0x00000109972890 @tempfile=#<Tempfile:/var/folders/bf/8hb5bw1s42g4k5n3n24tr509ds21cn/T/RackMultipart20140721-27761-fhye51>, @original_filename="obiwan.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"note[photo]\"; filename=\"obiwan.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Note"}
+Completed 500 Internal Server Error in 37ms
+
+ActiveRecord::AssociationTypeMismatch (DropinFile(#2228094000) expected, got ActionDispatch::Http::UploadedFile(#2170695320)):
+  app/controllers/notes_controller.rb:12:in `create'
+
+
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.5ms)
+
+
+Started POST "/notes" for 127.0.0.1 at 2014-07-21 00:52:47 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by NotesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WavEEL28SGf4t6EPB57I2VVZ1ssVhyOInD6zNvjm3gc=", "note"=>{"body"=>"", "photo"=>#<ActionDispatch::Http::UploadedFile:0x000001076dcc68 @tempfile=#<Tempfile:/var/folders/bf/8hb5bw1s42g4k5n3n24tr509ds21cn/T/RackMultipart20140721-27809-12qpmiy>, @original_filename="obiwan.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"note[photo]\"; filename=\"obiwan.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Note"}
+Completed 500 Internal Server Error in 14ms
+
+NoMethodError (undefined method `accept_nested_attributes_for' for #<Class:0x00000107704d80>):
+  app/models/note.rb:10:in `<class:Note>'
+  app/models/note.rb:1:in `<top (required)>'
+  app/controllers/notes_controller.rb:12:in `create'
+
+
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.6ms)
+
+
+Started POST "/notes" for 127.0.0.1 at 2014-07-21 00:53:38 -0400
+Processing by NotesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WavEEL28SGf4t6EPB57I2VVZ1ssVhyOInD6zNvjm3gc=", "note"=>{"body"=>"", "photo"=>#<ActionDispatch::Http::UploadedFile:0x000001092388e0 @tempfile=#<Tempfile:/var/folders/bf/8hb5bw1s42g4k5n3n24tr509ds21cn/T/RackMultipart20140721-27809-5usd2i>, @original_filename="obiwan.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"note[photo]\"; filename=\"obiwan.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Note"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  Rendered notes/new.html.erb within layouts/application (4.0ms)
+Completed 500 Internal Server Error in 24ms
+
+ActionView::Template::Error (Missing partial notes/_form_, application/_form_ with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee]}. Searched in:
+  * "/Users/jlinowes/Projects/drop_in_the_bucket/spec/test_app/app/views"
+  * "/Users/jlinowes/Projects/drop_in_the_bucket/app/views"
+):
+    1: <%= render "form_#{params[:kind]}", note: @note %>
+  app/views/notes/new.html.erb:1:in `_app_views_notes_new_html_erb__438791886688269574_2164720580'
+  app/controllers/notes_controller.rb:16:in `create'
+
+
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (10.0ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2014-07-21 00:56:28 -0400
+Processing by NotesController#index as HTML
+  [1m[35mNote Load (0.2ms)[0m  SELECT "notes".* FROM "notes"
+  Rendered collection (0.0ms)
+  Rendered notes/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 12ms (Views: 11.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-21 00:56:28 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-21 00:56:28 -0400
+
+
+Started GET "/notes/new?kind=builder" for 127.0.0.1 at 2014-07-21 00:56:31 -0400
+Processing by NotesController#new as HTML
+  Parameters: {"kind"=>"builder"}
+  Rendered notes/_form_builder.html.erb (10.4ms)
+  Rendered notes/new.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 15ms (Views: 14.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-21 00:56:31 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-21 00:56:31 -0400
+
+
+Started POST "/notes" for 127.0.0.1 at 2014-07-21 00:56:44 -0400
+Processing by NotesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WavEEL28SGf4t6EPB57I2VVZ1ssVhyOInD6zNvjm3gc=", "note"=>{"body"=>"dfdgfad", "photo"=>#<ActionDispatch::Http::UploadedFile:0x00000103453428 @tempfile=#<Tempfile:/var/folders/bf/8hb5bw1s42g4k5n3n24tr509ds21cn/T/RackMultipart20140721-27809-k21f6y>, @original_filename="obiwan.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"note[photo]\"; filename=\"obiwan.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Note"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "notes" ("body", "created_at", "updated_at") VALUES (?, ?, ?)  [["body", "dfdgfad"], ["created_at", "2014-07-21 04:56:44.857688"], ["updated_at", "2014-07-21 04:56:44.857688"]]
+  [1m[36m (2.2ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/notes
+Completed 302 Found in 8ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2014-07-21 00:56:44 -0400
+Processing by NotesController#index as HTML
+  [1m[35mNote Load (0.2ms)[0m  SELECT "notes".* FROM "notes"
+  Rendered notes/_note.html.erb (1.7ms)
+  Rendered notes/index.html.erb within layouts/application (3.2ms)
+Completed 500 Internal Server Error in 5ms
+
+ActionView::Template::Error (undefined method `photo?' for #<Note:0x000001016ce920>):
+    1: <div style="float:left; width: 150px;">
+    2:   <% if note.photo? %>
+    3:      <%= note.photo.file.thumb.url %> <br />
+    4:      Photo: <%= note.photo.id %> : <%= note.photo.file.profile.url %>
+    5:   <% else %>
+  app/views/notes/_note.html.erb:2:in `_app_views_notes__note_html_erb__1825792715253189023_2159436780'
+  app/views/notes/index.html.erb:4:in `_app_views_notes_index_html_erb__2222739077476595201_2165845820'
+
+
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (10.8ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2014-07-21 00:59:08 -0400
+Processing by NotesController#index as HTML
+  [1m[36mNote Load (0.3ms)[0m  [1mSELECT "notes".* FROM "notes"[0m
+  [1m[35mDropinFile Load (0.2ms)[0m  SELECT  "dropin_files".* FROM "dropin_files"  WHERE "dropin_files"."dropinable_id" = ? AND "dropin_files"."dropinable_type" = ? AND "dropin_files"."scope" = 'photo' LIMIT 1  [["dropinable_id", 1], ["dropinable_type", "Note"]]
+  Rendered notes/_note.html.erb (71.8ms)
+  Rendered notes/index.html.erb within layouts/application (76.5ms)
+Completed 200 OK in 83ms (Views: 79.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-21 00:59:08 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-21 00:59:08 -0400
+
+
+Started GET "/notes/1/edit?kind=builder" for 127.0.0.1 at 2014-07-21 01:02:54 -0400
+Processing by NotesController#edit as HTML
+  Parameters: {"kind"=>"builder", "id"=>"1"}
+  [1m[36mNote Load (0.2ms)[0m  [1mSELECT  "notes".* FROM "notes"  WHERE "notes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered notes/_form_builder.html.erb (2.5ms)
+  Rendered notes/edit.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-21 01:02:54 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-21 01:02:54 -0400
+
+
+Started PATCH "/notes/1" for 127.0.0.1 at 2014-07-21 01:03:10 -0400
+Processing by NotesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WavEEL28SGf4t6EPB57I2VVZ1ssVhyOInD6zNvjm3gc=", "note"=>{"body"=>"dfdgfad", "photo"=>#<ActionDispatch::Http::UploadedFile:0x00000103530be8 @tempfile=#<Tempfile:/var/folders/bf/8hb5bw1s42g4k5n3n24tr509ds21cn/T/RackMultipart20140721-27809-cpy99>, @original_filename="obiwan.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"note[photo]\"; filename=\"obiwan.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Update Note", "id"=>"1"}
+  [1m[35mNote Load (0.1ms)[0m  SELECT  "notes".* FROM "notes"  WHERE "notes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mDropinFile Load (0.1ms)[0m  SELECT  "dropin_files".* FROM "dropin_files"  WHERE "dropin_files"."dropinable_id" = ? AND "dropin_files"."dropinable_type" = ? AND "dropin_files"."scope" = 'photo' LIMIT 1  [["dropinable_id", 1], ["dropinable_type", "Note"]]
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/notes
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2014-07-21 01:03:10 -0400
+Processing by NotesController#index as HTML
+  [1m[35mNote Load (0.2ms)[0m  SELECT "notes".* FROM "notes"
+  [1m[36mDropinFile Load (0.1ms)[0m  [1mSELECT  "dropin_files".* FROM "dropin_files"  WHERE "dropin_files"."dropinable_id" = ? AND "dropin_files"."dropinable_type" = ? AND "dropin_files"."scope" = 'photo' LIMIT 1[0m  [["dropinable_id", 1], ["dropinable_type", "Note"]]
+  Rendered notes/_note.html.erb (1.2ms)
+  Rendered notes/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-21 01:03:10 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-21 01:03:10 -0400
+
+
+Started GET "/notes/1/edit?kind=builder" for 127.0.0.1 at 2014-07-21 01:04:21 -0400
+Processing by NotesController#edit as HTML
+  Parameters: {"kind"=>"builder", "id"=>"1"}
+  [1m[35mNote Load (0.1ms)[0m  SELECT  "notes".* FROM "notes"  WHERE "notes"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered notes/_form_builder.html.erb (2.8ms)
+  Rendered notes/edit.html.erb within layouts/application (37.6ms)
+Completed 200 OK in 46ms (Views: 40.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-21 01:04:21 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-21 01:04:21 -0400
+
+
+Started PATCH "/notes/1" for 127.0.0.1 at 2014-07-21 01:04:32 -0400
+Processing by NotesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WavEEL28SGf4t6EPB57I2VVZ1ssVhyOInD6zNvjm3gc=", "note"=>{"body"=>"dfdgfad", "photo"=>#<ActionDispatch::Http::UploadedFile:0x000001025d1508 @tempfile=#<Tempfile:/var/folders/bf/8hb5bw1s42g4k5n3n24tr509ds21cn/T/RackMultipart20140721-27809-1sv3csd>, @original_filename="obiwan.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"note[photo]\"; filename=\"obiwan.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Update Note", "id"=>"1"}
+  [1m[36mNote Load (0.1ms)[0m  [1mSELECT  "notes".* FROM "notes"  WHERE "notes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.5ms)[0m  begin transaction
+  [1m[36mDropinFile Load (0.4ms)[0m  [1mSELECT  "dropin_files".* FROM "dropin_files"  WHERE "dropin_files"."dropinable_id" = ? AND "dropin_files"."dropinable_type" = ? AND "dropin_files"."scope" = 'photo' LIMIT 1[0m  [["dropinable_id", 1], ["dropinable_type", "Note"]]
+  [1m[35m (0.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/notes
+Completed 302 Found in 68889ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2014-07-21 01:05:41 -0400
+Processing by NotesController#index as HTML
+  [1m[36mNote Load (0.4ms)[0m  [1mSELECT "notes".* FROM "notes"[0m
+  [1m[35mDropinFile Load (0.2ms)[0m  SELECT  "dropin_files".* FROM "dropin_files"  WHERE "dropin_files"."dropinable_id" = ? AND "dropin_files"."dropinable_type" = ? AND "dropin_files"."scope" = 'photo' LIMIT 1  [["dropinable_id", 1], ["dropinable_type", "Note"]]
+  Rendered notes/_note.html.erb (7.2ms)
+  Rendered notes/index.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 24ms (Views: 22.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-21 01:05:41 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-21 01:05:41 -0400
+
+
+Started GET "/notes/1/edit?kind=builder" for 127.0.0.1 at 2014-07-21 01:07:42 -0400
+Processing by NotesController#edit as HTML
+  Parameters: {"kind"=>"builder", "id"=>"1"}
+  [1m[36mNote Load (0.3ms)[0m  [1mSELECT  "notes".* FROM "notes"  WHERE "notes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered notes/_form_builder.html.erb (10.7ms)
+  Rendered notes/edit.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 36ms (Views: 20.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-21 01:07:42 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-21 01:07:42 -0400
+
+
+Started PATCH "/notes/1" for 127.0.0.1 at 2014-07-21 01:07:54 -0400
+Processing by NotesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WavEEL28SGf4t6EPB57I2VVZ1ssVhyOInD6zNvjm3gc=", "note"=>{"body"=>"dfdgfad", "photo"=>#<ActionDispatch::Http::UploadedFile:0x0000010ca804f0 @tempfile=#<Tempfile:/var/folders/bf/8hb5bw1s42g4k5n3n24tr509ds21cn/T/RackMultipart20140721-27809-114jgor>, @original_filename="obiwan.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"note[photo]\"; filename=\"obiwan.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Update Note", "id"=>"1"}
+  [1m[35mNote Load (0.3ms)[0m  SELECT  "notes".* FROM "notes"  WHERE "notes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.6ms)[0m  [1mbegin transaction[0m
+  [1m[35mDropinFile Load (0.4ms)[0m  SELECT  "dropin_files".* FROM "dropin_files"  WHERE "dropin_files"."dropinable_id" = ? AND "dropin_files"."dropinable_type" = ? AND "dropin_files"."scope" = 'photo' LIMIT 1  [["dropinable_id", 1], ["dropinable_type", "Note"]]
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+Completed 500 Internal Server Error in 2955ms
+
+NoMethodError (undefined method `build' for nil:NilClass):
+  app/models/note.rb:16:in `photo='
+  app/controllers/notes_controller.rb:27:in `update'
+
+
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.8ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.9ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.1ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (26.9ms)
+
+
+Started PATCH "/notes/1" for 127.0.0.1 at 2014-07-21 01:08:21 -0400
+Processing by NotesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WavEEL28SGf4t6EPB57I2VVZ1ssVhyOInD6zNvjm3gc=", "note"=>{"body"=>"dfdgfad", "photo"=>#<ActionDispatch::Http::UploadedFile:0x000001070ff1b0 @tempfile=#<Tempfile:/var/folders/bf/8hb5bw1s42g4k5n3n24tr509ds21cn/T/RackMultipart20140721-27809-m6g8sc>, @original_filename="obiwan.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"note[photo]\"; filename=\"obiwan.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Update Note", "id"=>"1"}
+  [1m[35mNote Load (0.4ms)[0m  SELECT  "notes".* FROM "notes"  WHERE "notes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.6ms)[0m  [1mbegin transaction[0m
+  [1m[35mDropinFile Load (0.3ms)[0m  SELECT  "dropin_files".* FROM "dropin_files"  WHERE "dropin_files"."dropinable_id" = ? AND "dropin_files"."dropinable_type" = ? AND "dropin_files"."scope" = 'photo' LIMIT 1  [["dropinable_id", 1], ["dropinable_type", "Note"]]
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+Completed 500 Internal Server Error in 10969ms
+
+ArgumentError (When assigning attributes, you must pass a hash as an argument.):
+  app/models/note.rb:16:in `photo='
+  app/controllers/notes_controller.rb:27:in `update'
+
+
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.8ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (26.6ms)
+
+
+Started PATCH "/notes/1" for 127.0.0.1 at 2014-07-21 01:08:49 -0400
+Processing by NotesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WavEEL28SGf4t6EPB57I2VVZ1ssVhyOInD6zNvjm3gc=", "note"=>{"body"=>"dfdgfad", "photo"=>#<ActionDispatch::Http::UploadedFile:0x0000010918a3d0 @tempfile=#<Tempfile:/var/folders/bf/8hb5bw1s42g4k5n3n24tr509ds21cn/T/RackMultipart20140721-27809-il3uy0>, @original_filename="obiwan.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"note[photo]\"; filename=\"obiwan.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Update Note", "id"=>"1"}
+  [1m[35mNote Load (0.4ms)[0m  SELECT  "notes".* FROM "notes"  WHERE "notes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35mDropinFile Load (0.4ms)[0m  SELECT  "dropin_files".* FROM "dropin_files"  WHERE "dropin_files"."dropinable_id" = ? AND "dropin_files"."dropinable_type" = ? AND "dropin_files"."scope" = 'photo' LIMIT 1  [["dropinable_id", 1], ["dropinable_type", "Note"]]
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "dropin_files" ("created_at", "dropinable_id", "dropinable_type", "item", "scope", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2014-07-21 05:08:52.142552"], ["dropinable_id", 1], ["dropinable_type", "Note"], ["item", "obiwan.jpg"], ["scope", "photo"], ["updated_at", "2014-07-21 05:08:52.142552"]]
+  [1m[35m (0.6ms)[0m  rollback transaction
+Completed 500 Internal Server Error in 29019ms
+
+Excon::Errors::NotFound (Expected(200) <=> Actual(404 Not Found)
+  response => #<Excon::Response:0x00000104f3b7b8 @data={:body=>"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>NoSuchBucket</Code><Message>The specified bucket does not exist</Message><BucketName>dropinthebucket-dev</BucketName><RequestId>BB6F114D33E5C349</RequestId><HostId>1AfNrsBNIft0ETiVPdWU/qBj8RC4/O8R+onWShMw4YWW5UqKSQM+QhVrj/UfCi6Y</HostId></Error>", :headers=>{"x-amz-request-id"=>"BB6F114D33E5C349", "x-amz-id-2"=>"1AfNrsBNIft0ETiVPdWU/qBj8RC4/O8R+onWShMw4YWW5UqKSQM+QhVrj/UfCi6Y", "Content-Type"=>"application/xml", "Transfer-Encoding"=>"", "Date"=>"Mon, 21 Jul 2014 05:09:17 GMT", "Connection"=>"close", "Server"=>"AmazonS3"}, :status=>404, :remote_ip=>"54.231.8.217", :local_port=>61401, :local_address=>"192.168.1.45"}, @body="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>NoSuchBucket</Code><Message>The specified bucket does not exist</Message><BucketName>dropinthebucket-dev</BucketName><RequestId>BB6F114D33E5C349</RequestId><HostId>1AfNrsBNIft0ETiVPdWU/qBj8RC4/O8R+onWShMw4YWW5UqKSQM+QhVrj/UfCi6Y</HostId></Error>", @headers={"x-amz-request-id"=>"BB6F114D33E5C349", "x-amz-id-2"=>"1AfNrsBNIft0ETiVPdWU/qBj8RC4/O8R+onWShMw4YWW5UqKSQM+QhVrj/UfCi6Y", "Content-Type"=>"application/xml", "Transfer-Encoding"=>"", "Date"=>"Mon, 21 Jul 2014 05:09:17 GMT", "Connection"=>"close", "Server"=>"AmazonS3"}, @status=404, @remote_ip="54.231.8.217", @local_port=61401, @local_address="192.168.1.45">):
+  app/controllers/notes_controller.rb:27:in `update'
+
+
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.4ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.1ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (25.0ms)
+
+
+Started PATCH "/notes/1" for 127.0.0.1 at 2014-07-21 01:13:54 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by NotesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WavEEL28SGf4t6EPB57I2VVZ1ssVhyOInD6zNvjm3gc=", "note"=>{"body"=>"dfdgfad", "photo"=>#<ActionDispatch::Http::UploadedFile:0x00000105556c38 @tempfile=#<Tempfile:/var/folders/bf/8hb5bw1s42g4k5n3n24tr509ds21cn/T/RackMultipart20140721-27863-1efrft7>, @original_filename="obiwan.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"note[photo]\"; filename=\"obiwan.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Update Note", "id"=>"1"}
+  [1m[35mNote Load (0.2ms)[0m  SELECT  "notes".* FROM "notes"  WHERE "notes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35mDropinFile Load (0.4ms)[0m  SELECT  "dropin_files".* FROM "dropin_files"  WHERE "dropin_files"."dropinable_id" = ? AND "dropin_files"."dropinable_type" = ? AND "dropin_files"."scope" = 'photo' LIMIT 1  [["dropinable_id", 1], ["dropinable_type", "Note"]]
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "dropin_files" ("created_at", "dropinable_id", "dropinable_type", "item", "scope", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2014-07-21 05:14:01.957995"], ["dropinable_id", 1], ["dropinable_type", "Note"], ["item", "obiwan.jpg"], ["scope", "photo"], ["updated_at", "2014-07-21 05:14:01.957995"]]
+  [1m[35m (2.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/notes
+Completed 302 Found in 21889ms (ActiveRecord: 5.9ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2014-07-21 01:14:16 -0400
+Processing by NotesController#index as HTML
+  [1m[36mNote Load (0.6ms)[0m  [1mSELECT "notes".* FROM "notes"[0m
+  [1m[35mDropinFile Load (0.5ms)[0m  SELECT  "dropin_files".* FROM "dropin_files"  WHERE "dropin_files"."dropinable_id" = ? AND "dropin_files"."dropinable_type" = ? AND "dropin_files"."scope" = 'photo' LIMIT 1  [["dropinable_id", 1], ["dropinable_type", "Note"]]
+  Rendered notes/_note.html.erb (15.8ms)
+  Rendered notes/index.html.erb within layouts/application (42.4ms)
+Completed 500 Internal Server Error in 54ms
+
+ActionView::Template::Error (undefined method `file' for #<DropinFile:0x0000010527e5d8>):
+    1: <div style="float:left; width: 150px;">
+    2:   <% if note.photo? %>
+    3:      <%= note.photo.file.thumb.url %> <br />
+    4:      Photo: <%= note.photo.id %> : <%= note.photo.file.profile.url %>
+    5:   <% else %>
+    6:     No photo.
+  app/views/notes/_note.html.erb:3:in `_app_views_notes__note_html_erb__2594376254593988664_2190351440'
+  app/views/notes/index.html.erb:4:in `_app_views_notes_index_html_erb__2289992216473701799_2189725700'
+
+
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.7ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (23.1ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2014-07-21 01:20:01 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by NotesController#index as HTML
+  [1m[35mNote Load (0.2ms)[0m  SELECT "notes".* FROM "notes"
+  [1m[36mDropinFile Load (0.2ms)[0m  [1mSELECT  "dropin_files".* FROM "dropin_files"  WHERE "dropin_files"."dropinable_id" = ? AND "dropin_files"."dropinable_type" = ? LIMIT 1[0m  [["dropinable_id", 1], ["dropinable_type", "Note"]]
+  Rendered notes/_note.html.erb (22.5ms)
+  Rendered notes/index.html.erb within layouts/application (29.8ms)
+Completed 500 Internal Server Error in 39ms
+
+ActionView::Template::Error (undefined method `file' for #<DropinFile:0x00000102c4bfa0>):
+    1: <div style="float:left; width: 150px;">
+    2:   <% if note.photo? %>
+    3:      <%= note.photo.file.thumb.url %> <br />
+    4:      Photo: <%= note.photo.id %> : <%= note.photo.file.profile.url %>
+    5:   <% else %>
+    6:     No photo.
+  app/views/notes/_note.html.erb:3:in `_app_views_notes__note_html_erb__4186463050393119793_2208677620'
+  app/views/notes/index.html.erb:4:in `_app_views_notes_index_html_erb___4590576187542324013_2208130920'
+
+
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (10.6ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (21.9ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2014-07-21 01:20:05 -0400
+Processing by NotesController#index as HTML
+  [1m[35mNote Load (0.2ms)[0m  SELECT "notes".* FROM "notes"
+  [1m[36mDropinFile Load (0.1ms)[0m  [1mSELECT  "dropin_files".* FROM "dropin_files"  WHERE "dropin_files"."dropinable_id" = ? AND "dropin_files"."dropinable_type" = ? LIMIT 1[0m  [["dropinable_id", 1], ["dropinable_type", "Note"]]
+  Rendered notes/_note.html.erb (1.8ms)
+  Rendered notes/index.html.erb within layouts/application (3.0ms)
+Completed 500 Internal Server Error in 5ms
+
+ActionView::Template::Error (undefined method `file' for #<DropinFile:0x00000102ed3d18>):
+    1: <div style="float:left; width: 150px;">
+    2:   <% if note.photo? %>
+    3:      <%= note.photo.file.thumb.url %> <br />
+    4:      Photo: <%= note.photo.id %> : <%= note.photo.file.profile.url %>
+    5:   <% else %>
+    6:     No photo.
+  app/views/notes/_note.html.erb:3:in `_app_views_notes__note_html_erb__4186463050393119793_2208677620'
+  app/views/notes/index.html.erb:4:in `_app_views_notes_index_html_erb___4590576187542324013_2208130920'
+
+
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (10.4ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2014-07-21 01:21:13 -0400
+Processing by NotesController#index as HTML
+  [1m[35mNote Load (0.1ms)[0m  SELECT "notes".* FROM "notes"
+  [1m[36mDropinFile Load (0.1ms)[0m  [1mSELECT  "dropin_files".* FROM "dropin_files"  WHERE "dropin_files"."dropinable_id" = ? AND "dropin_files"."dropinable_type" = ? LIMIT 1[0m  [["dropinable_id", 1], ["dropinable_type", "Note"]]
+  [1m[35mNote Load (0.3ms)[0m  SELECT  "notes".* FROM "notes"  WHERE "notes"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered notes/_note.html.erb (290973.3ms)
+  Rendered notes/index.html.erb within layouts/application (290975.2ms)
+Completed 500 Internal Server Error in 290978ms
+
+ActionView::Template::Error (undefined method `file' for #<DropinFile:0x000001012a2090>):
+    1: <div style="float:left; width: 150px;">
+    2:   <% if note.photo? %>
+    3:      <%- byebug %>
+    4:      <%= note.photo.item.thumb.url %> <br />
+    5:      Photo: <%= note.photo.id %> : <%= note.photo.item.profile.url %>
+    6:   <% else %>
+    7:     No photo.
+  app/views/notes/_note.html.erb:4:in `_app_views_notes__note_html_erb__4186463050393119793_2157220820'
+  app/views/notes/index.html.erb:4:in `_app_views_notes_index_html_erb___4590576187542324013_2208130920'
+
+
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.5ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (19.6ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2014-07-21 01:26:10 -0400
+Processing by NotesController#index as HTML
+  [1m[36mNote Load (0.3ms)[0m  [1mSELECT "notes".* FROM "notes"[0m
+  [1m[35mDropinFile Load (0.2ms)[0m  SELECT  "dropin_files".* FROM "dropin_files"  WHERE "dropin_files"."dropinable_id" = ? AND "dropin_files"."dropinable_type" = ? LIMIT 1  [["dropinable_id", 1], ["dropinable_type", "Note"]]
+  Rendered notes/_note.html.erb (6327.2ms)
+  Rendered notes/index.html.erb within layouts/application (6331.2ms)
+Completed 500 Internal Server Error in 6336ms
+
+ActionView::Template::Error (undefined method `profile' for #<PhotoUploader:0x000001014d8f30>):
+    2:   <% if note.photo? %>
+    3:      <%- byebug %>
+    4:      <%= note.photo.item.thumb.url %> <br />
+    5:      Photo: <%= note.photo.id %> : <%= note.photo.item.profile.url %>
+    6:   <% else %>
+    7:     No photo.
+    8:   <% end %>
+  app/views/notes/_note.html.erb:5:in `_app_views_notes__note_html_erb__4186463050393119793_2158206060'
+  app/views/notes/index.html.erb:4:in `_app_views_notes_index_html_erb___4590576187542324013_2208130920'
+
+
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.5ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (5.9ms)
+  Rendered /Users/jlinowes/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (58.3ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2014-07-21 01:26:34 -0400
+Processing by NotesController#index as HTML
+  [1m[36mNote Load (0.3ms)[0m  [1mSELECT "notes".* FROM "notes"[0m
+  [1m[35mDropinFile Load (0.3ms)[0m  SELECT  "dropin_files".* FROM "dropin_files"  WHERE "dropin_files"."dropinable_id" = ? AND "dropin_files"."dropinable_type" = ? LIMIT 1  [["dropinable_id", 1], ["dropinable_type", "Note"]]
+  Rendered notes/_note.html.erb (20847.1ms)
+  Rendered notes/index.html.erb within layouts/application (20853.3ms)
+Completed 200 OK in 20883ms (Views: 20881.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-21 01:26:55 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-21 01:26:55 -0400
+
+
+Started GET "/notes" for 127.0.0.1 at 2014-07-21 01:27:23 -0400
+Processing by NotesController#index as HTML
+  [1m[36mNote Load (0.4ms)[0m  [1mSELECT "notes".* FROM "notes"[0m
+  [1m[35mDropinFile Load (0.3ms)[0m  SELECT  "dropin_files".* FROM "dropin_files"  WHERE "dropin_files"."dropinable_id" = ? AND "dropin_files"."dropinable_type" = ? LIMIT 1  [["dropinable_id", 1], ["dropinable_type", "Note"]]
+  Rendered notes/_note.html.erb (3261.9ms)
+  Rendered notes/index.html.erb within layouts/application (3267.5ms)
+Completed 200 OK in 3279ms (Views: 3277.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-21 01:27:26 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-21 01:27:26 -0400
+
+
+Started GET "/notes/1/edit?kind=builder" for 127.0.0.1 at 2014-07-21 01:28:23 -0400
+Processing by NotesController#edit as HTML
+  Parameters: {"kind"=>"builder", "id"=>"1"}
+  [1m[36mNote Load (0.3ms)[0m  [1mSELECT  "notes".* FROM "notes"  WHERE "notes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered notes/_form_builder.html.erb (101.7ms)
+  Rendered notes/edit.html.erb within layouts/application (105.0ms)
+Completed 200 OK in 117ms (Views: 113.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-21 01:28:24 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-21 01:28:24 -0400
+
+
+Started PATCH "/notes/1" for 127.0.0.1 at 2014-07-21 01:28:32 -0400
+Processing by NotesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WavEEL28SGf4t6EPB57I2VVZ1ssVhyOInD6zNvjm3gc=", "note"=>{"body"=>"dfdgfad", "photo"=>#<ActionDispatch::Http::UploadedFile:0x000001071fe340 @tempfile=#<Tempfile:/var/folders/bf/8hb5bw1s42g4k5n3n24tr509ds21cn/T/RackMultipart20140721-27880-cn4zno>, @original_filename="obiwan.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"note[photo]\"; filename=\"obiwan.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Update Note", "id"=>"1"}
+  [1m[35mNote Load (0.3ms)[0m  SELECT  "notes".* FROM "notes"  WHERE "notes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mbegin transaction[0m
+  [1m[35mDropinFile Load (0.5ms)[0m  SELECT  "dropin_files".* FROM "dropin_files"  WHERE "dropin_files"."dropinable_id" = ? AND "dropin_files"."dropinable_type" = ? LIMIT 1  [["dropinable_id", 1], ["dropinable_type", "Note"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/notes
+Completed 302 Found in 8418ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2014-07-21 01:28:40 -0400
+Processing by NotesController#index as HTML
+  [1m[35mNote Load (0.4ms)[0m  SELECT "notes".* FROM "notes"
+  [1m[36mDropinFile Load (0.4ms)[0m  [1mSELECT  "dropin_files".* FROM "dropin_files"  WHERE "dropin_files"."dropinable_id" = ? AND "dropin_files"."dropinable_type" = ? LIMIT 1[0m  [["dropinable_id", 1], ["dropinable_type", "Note"]]
+  Rendered notes/_note.html.erb (2161.7ms)
+  Rendered notes/index.html.erb within layouts/application (2168.6ms)
+Completed 200 OK in 2184ms (Views: 2181.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-21 01:28:42 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-21 01:28:42 -0400
+
+
+Started GET "/notes" for 127.0.0.1 at 2014-07-21 01:29:59 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by NotesController#index as HTML
+  [1m[35mNote Load (0.2ms)[0m  SELECT "notes".* FROM "notes"
+  [1m[36mDropinFile Load (0.2ms)[0m  [1mSELECT  "dropin_files".* FROM "dropin_files"  WHERE "dropin_files"."dropinable_id" = ? AND "dropin_files"."dropinable_type" = ? LIMIT 1[0m  [["dropinable_id", 1], ["dropinable_type", "Note"]]
+  Rendered notes/_note.html.erb (10320.1ms)
+  Rendered notes/index.html.erb within layouts/application (10329.5ms)
+Completed 200 OK in 10372ms (Views: 10367.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/notes/new?kind=builder" for 127.0.0.1 at 2014-07-21 01:30:10 -0400
+Processing by NotesController#new as HTML
+  Parameters: {"kind"=>"builder"}
+  Rendered notes/_form_builder.html.erb (52.7ms)
+  Rendered notes/new.html.erb within layouts/application (55.5ms)
+Completed 200 OK in 64ms (Views: 63.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-21 01:30:10 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-21 01:30:10 -0400
+
+
+Started POST "/notes" for 127.0.0.1 at 2014-07-21 01:30:24 -0400
+Processing by NotesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WavEEL28SGf4t6EPB57I2VVZ1ssVhyOInD6zNvjm3gc=", "note"=>{"body"=>"dhgjfghjfgh", "photo"=>#<ActionDispatch::Http::UploadedFile:0x000001091f6f08 @tempfile=#<Tempfile:/var/folders/bf/8hb5bw1s42g4k5n3n24tr509ds21cn/T/RackMultipart20140721-27924-1hlkhxu>, @original_filename="RoadToValdez.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"note[photo]\"; filename=\"RoadToValdez.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Note"}
+  [1m[35m (0.5ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "notes" ("body", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["body", "dhgjfghjfgh"], ["created_at", "2014-07-21 05:30:24.895961"], ["updated_at", "2014-07-21 05:30:24.895961"]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "dropin_files" ("created_at", "dropinable_id", "dropinable_type", "item", "scope", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2014-07-21 05:30:24.906787"], ["dropinable_id", 2], ["dropinable_type", "Note"], ["item", "RoadToValdez.jpg"], ["scope", "photo"], ["updated_at", "2014-07-21 05:30:24.906787"]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/notes
+Completed 302 Found in 8162ms (ActiveRecord: 4.6ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2014-07-21 01:30:32 -0400
+Processing by NotesController#index as HTML
+  [1m[35mNote Load (0.4ms)[0m  SELECT "notes".* FROM "notes"
+  [1m[36mDropinFile Load (0.2ms)[0m  [1mSELECT  "dropin_files".* FROM "dropin_files"  WHERE "dropin_files"."dropinable_id" = ? AND "dropin_files"."dropinable_type" = ? LIMIT 1[0m  [["dropinable_id", 1], ["dropinable_type", "Note"]]
+  [1m[35mDropinFile Load (0.4ms)[0m  SELECT  "dropin_files".* FROM "dropin_files"  WHERE "dropin_files"."dropinable_id" = ? AND "dropin_files"."dropinable_type" = ? LIMIT 1  [["dropinable_id", 2], ["dropinable_type", "Note"]]
+  Rendered notes/_note.html.erb (4488.8ms)
+  Rendered notes/index.html.erb within layouts/application (4494.7ms)
+Completed 200 OK in 4506ms (Views: 4504.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-21 01:30:37 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-21 01:30:37 -0400
